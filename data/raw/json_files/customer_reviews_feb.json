@@ -1,0 +1,68 @@
+[
+  {
+    "review_id": "REV-006",
+    "product_id": "PROD-008",
+    "customer_id": "CUST-12349",
+    "transaction_id": "TXN-007",
+    "rating": 5,
+    "title": "Silla muy cómoda",
+    "comment": "Trabajo desde casa y esta silla ha sido un cambio total. Mi espalda ya no me duele después de 8 horas frente a la computadora.",
+    "review_date": "2024-02-10T09:00:00Z",
+    "verified_purchase": true,
+    "helpful_votes": 18,
+    "unhelpful_votes": 0
+  },
+  {
+    "review_id": "REV-007",
+    "product_id": "PROD-009",
+    "customer_id": "CUST-12349",
+    "transaction_id": "TXN-007",
+    "rating": 4,
+    "title": "Escritorio funcional",
+    "comment": "El escritorio es bueno, el mecanismo de ajuste funciona bien. Le falta un poco de espacio pero por el precio está bien.",
+    "review_date": "10/02/2024",
+    "verified_purchase": true,
+    "helpful_votes": 7,
+    "unhelpful_votes": 1
+  },
+  {
+    "review_id": "REV-008",
+    "product_id": "PROD-001",
+    "customer_id": "CUST-12348",
+    "transaction_id": "TXN-006",
+    "rating": 5,
+    "title": "Perfecto para gaming",
+    "comment": "Uso este teclado para jugar y es increíble. Las teclas tienen el peso perfecto y el RGB se ve genial en mi setup.",
+    "review_date": "2024-02-12T20:30:00Z",
+    "verified_purchase": true,
+    "helpful_votes": 9,
+    "unhelpful_votes": 0
+  },
+  {
+    "review_id": "REV-009",
+    "product_id": "PROD-010",
+    "customer_id": "CUST-12345",
+    "transaction_id": "TXN-008",
+    "rating": 4,
+    "title": "Se ve bien",
+    "comment": "La planta se ve muy real, buen tamaño. Solo que el color verde es un poco más brillante de lo que esperaba.",
+    "review_date": "2024-02-15",
+    "verified_purchase": true,
+    "helpful_votes": 4,
+    "unhelpful_votes": 1
+  },
+  {
+    "review_id": "REV-010",
+    "product_id": "PROD-011",
+    "customer_id": "CUST-12346",
+    "transaction_id": "TXN-010",
+    "rating": 5,
+    "title": "Libreta de calidad",
+    "comment": "El cuero se siente premium y las hojas son de buena calidad. Perfecta para mi diario.",
+    "review_date": "2024-02-20T11:00:00Z",
+    "verified_purchase": true,
+    "helpful_votes": 6,
+    "unhelpful_votes": 0
+  }
+]
+

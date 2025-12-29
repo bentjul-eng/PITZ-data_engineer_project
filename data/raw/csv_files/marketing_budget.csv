@@ -1,0 +1,10 @@
+month,year,channel,allocated_budget,spent_budget,target_conversions,actual_conversions,target_roi,actual_roi
+January,2024,email,7000.00,7000.00,200,275,2.5,3.1
+January,2024,social_media,3000.00,3000.00,100,150,2.0,3.3
+January,2024,search_ads,8000.00,8000.00,180,240,2.3,2.3
+January,2024,display,10000.00,10000.00,300,400,2.0,3.2
+February,2024,email,7000.00,5000.00,200,150,2.5,2.0
+February,2024,social_media,3000.00,3000.00,100,150,2.0,3.3
+February,2024,search_ads,8000.00,8000.00,180,240,2.3,2.3
+February,2024,display,10000.00,10000.00,300,400,2.0,3.2
+

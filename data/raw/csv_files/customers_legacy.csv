@@ -1,0 +1,10 @@
+customer_id,first_name,last_name,email,phone,registration_date,country,vip_status
+CUST-12345,Juan,Pérez García,juan.perez@email.com,+525551234567,2023-05-10,Mexico,Y
+CUST-12346,María,López Hernández,MARIA.LOPEZ@EMAIL.COM,3312345678,15/06/2023,MX,N
+CUST-12347,Carlos,Mendoza,,5559876543,2023-08-01,Mexico,N
+CUST-12348,Ana,Martínez Silva,ana_martinez@email.com.ar,+541145678900,2023-09-12,Argentina,N
+CUST-12349,Pedro,Silva Santos,pedro.silva@email.br,+5511987654321,2023-10-05,Brasil,Y
+CUST-12350,Laura,Rodríguez,laura.rodriguez@email.co,5712345678,2023-11-20,Colombia,N
+CUST-12351,Diego,Fernández,diego.fernandez@email.ar,,2023-12-01,AR,N
+CUST-12352,Sofía,González,sofia.gonzalez@email.mx,5554443333,01/01/2024,Mexico,N
+

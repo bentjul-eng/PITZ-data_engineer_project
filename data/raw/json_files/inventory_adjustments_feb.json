@@ -1,0 +1,63 @@
+[
+  {
+    "adjustment_id": "ADJ-007",
+    "product_id": "PROD-008",
+    "date": "2024-02-01T08:00:00Z",
+    "type": "sale",
+    "quantity_change": -10,
+    "previous_stock": 35,
+    "new_stock": 25,
+    "reason": "Bulk sale",
+    "warehouse": "CDMX-MAIN",
+    "user": "system"
+  },
+  {
+    "adjustment_id": "ADJ-008",
+    "product_id": "PROD-003",
+    "date": "02/02/2024",
+    "type": "restock",
+    "quantity_change": 100,
+    "previous_stock": 400,
+    "new_stock": 500,
+    "reason": "Weekly restock",
+    "warehouse": "CDMX-MAIN",
+    "user": "admin@shopflow.com"
+  },
+  {
+    "adjustment_id": "ADJ-009",
+    "product_id": "PROD-009",
+    "date": "2024-02-05T11:30:00Z",
+    "type": "sale",
+    "quantity_change": -5,
+    "previous_stock": 20,
+    "new_stock": 15,
+    "reason": "Regular sales",
+    "warehouse": "CDMX-MAIN",
+    "user": "system"
+  },
+  {
+    "adjustment_id": "ADJ-010",
+    "product_id": "PROD-011",
+    "date": "2024-02-10",
+    "type": "restock",
+    "quantity_change": 50,
+    "previous_stock": 350,
+    "new_stock": 400,
+    "reason": "Supplier delivery",
+    "warehouse": "CDMX-MAIN",
+    "user": "admin@shopflow.com"
+  },
+  {
+    "adjustment_id": "ADJ-011",
+    "product_id": "PROD-001",
+    "date": "2024-02-15T14:00:00Z",
+    "type": "transfer",
+    "quantity_change": -20,
+    "previous_stock": 150,
+    "new_stock": 130,
+    "reason": "Transfer to GDL warehouse",
+    "warehouse": "CDMX-MAIN",
+    "user": "warehouse.manager@shopflow.com"
+  }
+]
+

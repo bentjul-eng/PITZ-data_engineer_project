@@ -1,0 +1,10 @@
+customer_id,segment,total_lifetime_value,total_orders,avg_order_value,last_order_date,days_since_last_order,churn_risk
+CUST-12345,VIP,1247.18,5,249.44,2024-02-03,13,low
+CUST-12346,Regular,109.65,2,54.83,06/02/2024,10,low
+CUST-12347,Regular,95.48,1,95.48,2024-01-17,30,medium
+CUST-12348,Regular,25.50,1,25.50,01/02/2024,15,medium
+CUST-12349,VIP,261.00,1,261.00,2024-02-02,14,low
+CUST-12350,At Risk,499.99,1,499.99,2024-02-05,11,high
+CUST-12351,New,0,0,0,,999,new
+CUST-12352,New,0,0,0,NULL,999,new
+

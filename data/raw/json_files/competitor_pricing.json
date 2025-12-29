@@ -1,0 +1,63 @@
+[
+  {
+    "snapshot_id": "COMP-001",
+    "our_product_id": "PROD-001",
+    "our_price": 25.50,
+    "competitor": "CompetitorA",
+    "competitor_price": 27.99,
+    "competitor_url": "https://competitora.com/teclado-mecanico",
+    "snapshot_date": "2024-01-15T00:00:00Z",
+    "in_stock": true,
+    "rating": 4.3,
+    "num_reviews": 156
+  },
+  {
+    "snapshot_id": "COMP-002",
+    "our_product_id": "PROD-001",
+    "our_price": 25.50,
+    "competitor": "CompetitorB",
+    "competitor_price": 24.50,
+    "competitor_url": "https://competitorb.com/keyboard-mechanical",
+    "snapshot_date": "15/01/2024",
+    "in_stock": true,
+    "rating": 4.1,
+    "num_reviews": 89
+  },
+  {
+    "snapshot_id": "COMP-003",
+    "our_product_id": "PROD-002",
+    "our_price": 499.99,
+    "competitor": "CompetitorA",
+    "competitor_price": 520.00,
+    "competitor_url": "https://competitora.com/smartphone-galaxy",
+    "snapshot_date": "2024-01-15T00:00:00Z",
+    "in_stock": false,
+    "rating": null,
+    "num_reviews": null
+  },
+  {
+    "snapshot_id": "COMP-004",
+    "our_product_id": "PROD-002",
+    "our_price": 499.99,
+    "competitor": "CompetitorC",
+    "competitor_price": 485.00,
+    "competitor_url": "https://competitorc.com/galaxy-x10",
+    "snapshot_date": "2024-01-15",
+    "in_stock": true,
+    "rating": 4.5,
+    "num_reviews": 234
+  },
+  {
+    "snapshot_id": "COMP-005",
+    "our_product_id": "PROD-008",
+    "our_price": 75.00,
+    "competitor": "CompetitorB",
+    "competitor_price": 79.99,
+    "competitor_url": "https://competitorb.com/ergonomic-chair",
+    "snapshot_date": "2024-02-01T00:00:00Z",
+    "in_stock": true,
+    "rating": 4.6,
+    "num_reviews": 312
+  }
+]
+

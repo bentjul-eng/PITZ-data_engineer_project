@@ -1,0 +1,17 @@
+country_code,country_name,currency_code,tax_rate,shipping_zone,language,active
+MX,Mexico,MXN,16.00,ZONE-001,es,Yes
+GT,Guatemala,GTQ,12.00,ZONE-002,es,Yes
+SV,El Salvador,USD,13.00,ZONE-002,es,Yes
+CR,Costa Rica,CRC,13.00,ZONE-002,es,Y
+PA,Panama,USD,7.00,ZONE-002,es,YES
+CO,Colombia,COP,19.00,ZONE-003,es,1
+VE,Venezuela,VES,16.00,ZONE-003,es,No
+EC,Ecuador,USD,12.00,ZONE-003,es,TRUE
+PE,Peru,PEN,18.00,ZONE-003,es,Yes
+CL,Chile,CLP,19.00,ZONE-004,es,Yes
+AR,Argentina,ARS,21.00,ZONE-004,es,Yes
+UY,Uruguay,UYU,22.00,ZONE-004,es,YES
+BR,Brazil,BRL,17.00,ZONE-005,pt,Yes
+US,United States,USD,0,ZONE-006,en,Yes
+CA,Canada,CAD,13.00,ZONE-006,en,Yes
+

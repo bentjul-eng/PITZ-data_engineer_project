@@ -1,0 +1,68 @@
+[
+  {
+    "review_id": "REV-001",
+    "product_id": "PROD-001",
+    "customer_id": "CUST-12345",
+    "transaction_id": "TXN-001",
+    "rating": 5,
+    "title": "Excelente teclado",
+    "comment": "El teclado es de muy buena calidad, las luces RGB son hermosas y se siente muy bien al escribir.",
+    "review_date": "2024-01-22T10:30:00Z",
+    "verified_purchase": true,
+    "helpful_votes": 15,
+    "unhelpful_votes": 1
+  },
+  {
+    "review_id": "REV-002",
+    "product_id": "PROD-002",
+    "customer_id": "CUST-12347",
+    "transaction_id": "TXN-004",
+    "rating": 4,
+    "title": "Buen teléfono pero caro",
+    "comment": "El teléfono funciona bien, buena cámara y batería. Pero considero que el precio es un poco alto.",
+    "review_date": "25/01/2024",
+    "verified_purchase": true,
+    "helpful_votes": 8,
+    "unhelpful_votes": 2
+  },
+  {
+    "review_id": "REV-003",
+    "product_id": "PROD-003",
+    "customer_id": "CUST-12346",
+    "transaction_id": "TXN-002",
+    "rating": 5,
+    "title": "Cable perfecto",
+    "comment": "Cable de buena calidad, carga rápido y parece resistente.",
+    "review_date": "2024-01-28T14:15:00Z",
+    "verified_purchase": true,
+    "helpful_votes": 5,
+    "unhelpful_votes": 0
+  },
+  {
+    "review_id": "REV-004",
+    "product_id": "PROD-005",
+    "customer_id": "CUST-12345",
+    "transaction_id": "TXN-001",
+    "rating": 5,
+    "title": "Mejor compra del año",
+    "comment": "Audífonos increíbles, el sonido es cristalino y la cancelación de ruido funciona de maravilla. Totalmente recomendados.",
+    "review_date": "2024-01-20",
+    "verified_purchase": true,
+    "helpful_votes": 23,
+    "unhelpful_votes": 0
+  },
+  {
+    "review_id": "REV-005",
+    "product_id": "PROD-002",
+    "customer_id": "CUST-12350",
+    "transaction_id": "TXN-009",
+    "rating": 2,
+    "title": "Decepcionante",
+    "comment": "El teléfono llegó con un pixel muerto en la pantalla. Lo tuve que devolver.",
+    "review_date": "2024-01-30T16:45:00Z",
+    "verified_purchase": true,
+    "helpful_votes": 12,
+    "unhelpful_votes": 3
+  }
+]
+

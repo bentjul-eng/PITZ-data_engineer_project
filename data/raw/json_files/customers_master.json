@@ -1,0 +1,94 @@
+[
+  {
+    "customer_id": "CUST-12345",
+    "name": "Juan Pérez García",
+    "email": "juan.perez@email.com",
+    "phone": "+52-555-1234567",
+    "registration_date": "2023-05-10T08:30:00Z",
+    "birth_date": "1985-03-15",
+    "gender": "M",
+    "preferred_language": "es",
+    "address": {
+      "street": "Av. Insurgentes 1234",
+      "city": "Ciudad de México",
+      "state": "CDMX",
+      "country": "Mexico"
+    }
+  },
+  {
+    "customer_id": "CUST-12346",
+    "name": "María López Hernández",
+    "email": "MARIA.LOPEZ@EMAIL.COM",
+    "phone": "33-1234-5678",
+    "registration_date": "15/06/2023",
+    "birth_date": "1990-07-22",
+    "gender": "F",
+    "preferred_language": "es",
+    "address": {
+      "street": "Calle Falsa 123",
+      "city": "Guadalajara",
+      "state": "Jalisco",
+      "country": "MX"
+    }
+  },
+  {
+    "customer_id": "CUST-12347",
+    "name": "Carlos Mendoza",
+    "email": "carlos.mendoza@email.com",
+    "phone": "555-9876543",
+    "registration_date": "2023-08-01",
+    "birth_date": "1988-11-30",
+    "gender": "M",
+    "preferred_language": "es",
+    "address": null
+  },
+  {
+    "customer_id": "CUST-12348",
+    "name": "Ana Martínez Silva",
+    "email": "ana_martinez@email.com.ar",
+    "phone": "+54-11-4567-8900",
+    "registration_date": "2023-09-12T10:00:00Z",
+    "birth_date": "1992-02-18",
+    "gender": "F",
+    "preferred_language": "es",
+    "address": {
+      "street": "Av. Libertador 5000",
+      "city": "Buenos Aires",
+      "state": "Buenos Aires",
+      "country": "Argentina"
+    }
+  },
+  {
+    "customer_id": "CUST-12349",
+    "name": "Pedro Silva Santos",
+    "email": "pedro.silva@email.br",
+    "phone": "+55-11-98765-4321",
+    "registration_date": "2023-10-05T15:30:00Z",
+    "birth_date": "1987-05-09",
+    "gender": "M",
+    "preferred_language": "pt",
+    "address": {
+      "street": "Rua Paulista 1000",
+      "city": "São Paulo",
+      "state": "São Paulo",
+      "country": "Brasil"
+    }
+  },
+  {
+    "customer_id": "CUST-12350",
+    "name": "Laura Rodríguez",
+    "email": "laura.rodriguez@email.co",
+    "phone": "57-1-234-5678",
+    "registration_date": "2023-11-20",
+    "birth_date": "1995-09-14",
+    "gender": "F",
+    "preferred_language": "es",
+    "address": {
+      "street": "Carrera 7 #32-16",
+      "city": "Bogotá",
+      "state": "Cundinamarca",
+      "country": "Colombia"
+    }
+  }
+]
+

@@ -1,0 +1,37 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+env/
+venv/
+ENV/
+.venv
+
+# Ambientes virtuais
+*.env
+.env
+
+# Jupyter Notebook
+.ipynb_checkpoints
+
+# Logs
+logs/*.log
+*.log
+
+# Dados processados (opcional - decida se quer versionar)
+data/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS
+.DS_Store
+Thumbs.db
+
+# PostgreSQL
+*.sql~

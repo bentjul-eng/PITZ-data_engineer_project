@@ -1,0 +1,20 @@
+date,from_currency,to_currency,exchange_rate,source
+2024-01-01,USD,MXN,17.25,Bank of Mexico
+2024-01-01,USD,ARS,365.50,Central Bank Argentina
+2024-01-01,USD,BRL,4.95,Central Bank Brazil
+2024-01-01,USD,COP,3950.00,Central Bank Colombia
+2024-01-15,USD,MXN,17.18,Bank of Mexico
+15/01/2024,USD,ARS,370.25,Central Bank Argentina
+2024-01-15,USD,BRL,4.98,Central Bank Brazil
+2024-01-15,USD,COP,3975.50,Central Bank Colombia
+2024-02-01,USD,MXN,17.05,Bank of Mexico
+2024-02-01,USD,ARS,380.00,Central Bank Argentina
+01/02/2024,USD,BRL,5.02,Central Bank Brazil
+2024-02-01,USD,COP,4000.00,Central Bank Colombia
+2024-02-15,USD,MXN,16.95,Bank of Mexico
+2024-02-15,USD,ARS,390.50,Central Bank Argentina
+2024-02-15,USD,BRL,5.05,Central Bank Brazil
+15/02/2024,USD,COP,4025.00,Central Bank Colombia
+2024-01-01,MXN,USD,0.058,Bank of Mexico
+2024-02-01,MXN,USD,0.059,Bank of Mexico
+

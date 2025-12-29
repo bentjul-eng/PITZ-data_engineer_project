@@ -1,0 +1,12 @@
+category_id,category_name,parent_category,description,active,commission_rate
+CAT-001,Electronics,,Electronic devices and accessories,1,0.15
+CAT-002,Peripherals,Electronics,Computer peripherals and accessories,1,0.15
+CAT-003,Mobile,Electronics,Mobile phones and tablets,1,0.12
+CAT-004,Audio,Electronics,Audio devices and accessories,1,0.18
+CAT-005,Home & Office,,Home and office products,1,0.20
+CAT-006,Furniture,Home & Office,Office and home furniture,1,0.25
+CAT-007,Lighting,Home & Office,Lighting solutions,1,0.20
+CAT-008,Decoration,Home & Office,Decorative items,Y,0.22
+CAT-009,Stationery,Home & Office,Office supplies and stationery,TRUE,0.18
+CAT-010,Accessories,Electronics,Electronic accessories,1,0.15
+

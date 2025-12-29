@@ -1,0 +1,9 @@
+zone_id,zone_name,countries,base_cost,cost_per_kg,estimated_days_min,estimated_days_max,active
+ZONE-001,Mexico Domestic,"MX",8.50,2.00,3,5,Yes
+ZONE-002,Central America,"GT,SV,HN,NI,CR,PA",25.00,5.00,7,10,Yes
+ZONE-003,South America North,"CO,VE,EC,PE",38.00,8.00,8,12,Y
+ZONE-004,South America South,"CL,AR,UY,PY,BO",45.00,10.00,10,15,YES
+ZONE-005,Brazil,"BR",50.00,12.00,12,18,1
+ZONE-006,USA & Canada,"US,CA",35.00,7.00,6,10,TRUE
+ZONE-007,Europe,"ES,FR,DE,IT,UK,PT",80.00,15.00,15,25,Yes
+

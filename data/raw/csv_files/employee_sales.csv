@@ -1,0 +1,9 @@
+employee_id,employee_name,role,region,hire_date,sales_q1_2024,commission_earned,active
+EMP-001,Ricardo Martínez,Sales Representative,CDMX,2022-03-15,45000.00,6750.00,Yes
+EMP-002,Ana Gutiérrez,Sales Manager,CDMX,2020-01-10,78000.00,11700.00,Yes
+EMP-003,Luis Ramírez,Sales Representative,GDL,15/06/2021,32000.00,4800.00,Yes
+EMP-004,Carmen Flores,Sales Representative,MTY,2021-09-01,28000.00,4200.00,Y
+EMP-005,Miguel Ángel Torres,Sales Manager,GDL,2019-05-20,65000.00,9750.00,YES
+EMP-006,Patricia López,Sales Representative,CDMX,01/03/2023,18000.00,2700.00,Yes
+EMP-007,Fernando Sánchez,Sales Representative,BA,2023-10-01,12000.00,1800.00,No
+

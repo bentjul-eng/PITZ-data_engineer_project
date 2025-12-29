@@ -1,0 +1,88 @@
+[
+  {
+    "campaign_id": "CAMP-001",
+    "name": "Año Nuevo 2024",
+    "channel": "email",
+    "start_date": "2024-01-01T00:00:00Z",
+    "end_date": "2024-01-15T23:59:59Z",
+    "budget": 5000.00,
+    "impressions": 50000,
+    "clicks": 2500,
+    "conversions": 125,
+    "revenue_generated": 15750.00,
+    "target_audience": {
+      "countries": ["MX", "AR", "CO"],
+      "age_range": "25-45",
+      "interests": ["electronics", "technology"]
+    }
+  },
+  {
+    "campaign_id": "CAMP-002",
+    "name": "San Valentín Especial",
+    "channel": "social_media",
+    "start_date": "01/02/2024",
+    "end_date": "15/02/2024",
+    "budget": 3000.00,
+    "impressions": 75000,
+    "clicks": 3750,
+    "conversions": 150,
+    "revenue_generated": 9800.00,
+    "target_audience": {
+      "countries": ["MX", "BR"],
+      "age_range": "20-40",
+      "interests": ["home", "decoration"]
+    }
+  },
+  {
+    "campaign_id": "CAMP-003",
+    "name": "Flash Sale Electrónica",
+    "channel": "email",
+    "start_date": "2024-02-20T10:00:00Z",
+    "end_date": "2024-02-22T23:59:59Z",
+    "budget": 2000.00,
+    "impressions": 30000,
+    "clicks": 4500,
+    "conversions": 300,
+    "revenue_generated": 24500.00,
+    "target_audience": {
+      "countries": ["MX"],
+      "age_range": "18-55",
+      "interests": ["electronics", "deals"]
+    }
+  },
+  {
+    "campaign_id": "CAMP-004",
+    "name": "Regreso a Oficina",
+    "channel": "search_ads",
+    "start_date": "2024-01-15",
+    "end_date": "2024-02-28",
+    "budget": 8000.00,
+    "impressions": 120000,
+    "clicks": 6000,
+    "conversions": 240,
+    "revenue_generated": 18600.00,
+    "target_audience": {
+      "countries": ["MX", "AR", "CO", "BR"],
+      "age_range": "25-55",
+      "interests": ["office", "furniture", "productivity"]
+    }
+  },
+  {
+    "campaign_id": "CAMP-005",
+    "name": "Descuento Primera Compra",
+    "channel": "display",
+    "start_date": "2024-01-01T00:00:00Z",
+    "end_date": "2024-03-31T23:59:59Z",
+    "budget": 10000.00,
+    "impressions": 200000,
+    "clicks": 8000,
+    "conversions": 400,
+    "revenue_generated": 32000.00,
+    "target_audience": {
+      "countries": ["MX", "AR", "CO", "BR", "CL", "PE"],
+      "age_range": "18-65",
+      "interests": ["all"]
+    }
+  }
+]
+

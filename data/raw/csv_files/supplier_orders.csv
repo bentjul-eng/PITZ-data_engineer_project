@@ -1,0 +1,9 @@
+order_id,supplier_id,order_date,expected_delivery,actual_delivery,total_amount,status,products_count
+PO-001,SUP-001,2024-01-02,2024-01-05,2024-01-05,1500.00,delivered,3
+PO-002,SUP-004,2024-01-10,15/01/2024,2024-01-14,800.00,delivered,2
+PO-003,SUP-005,15/01/2024,2024-01-20,2024-01-18,600.00,delivered,1
+PO-004,SUP-008,2024-01-25,2024-02-05,2024-02-03,1200.00,delivered,2
+PO-005,SUP-003,2024-02-01,2024-02-15,,2500.00,in_transit,1
+PO-006,SUP-006,05/02/2024,20/02/2024,,4000.00,pending,2
+PO-007,SUP-002,2024-02-10,2024-03-15,,8000.00,in_transit,1
+
