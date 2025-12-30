@@ -9,26 +9,11 @@ Transforma dados Bronze → Silver seguindo arquitetura Medallion:
 
 import pandas as pd
 import logging
-import sys
-import io
 from pathlib import Path
 from typing import Dict
 from datetime import datetime
 
 
-# ============================================================================
-# CONFIGURAÇÃO DE ENCODING (FIX WINDOWS)
-# ============================================================================
-
-# Força UTF-8 no Windows para suportar emojis
-if sys.platform == 'win32':
-    sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding='utf-8')
-    sys.stderr = io.TextIOWrapper(sys.stderr.buffer, encoding='utf-8')
-
-
-# ============================================================================
-# CONFIGURAÇÃO
-# ============================================================================
 
 logging.basicConfig(
     level=logging.INFO,
@@ -47,10 +32,6 @@ REJECTED_DIR = Path('data') / 'rejected'
 SILVER_DIR.mkdir(parents=True, exist_ok=True)
 REJECTED_DIR.mkdir(parents=True, exist_ok=True)
 
-
-# ============================================================================
-# UTILITÁRIOS
-# ============================================================================
 
 def load_bronze_table(table_name: str) -> pd.DataFrame:
     """Carrega tabela da Bronze com tratamento de erro."""
@@ -209,9 +190,6 @@ def transform_customers() -> pd.DataFrame:
     return df
 
 
-# ============================================================================
-# TRANSFORMAÇÃO: ORDERS
-# ============================================================================
 
 def transform_orders(customers_df: pd.DataFrame) -> pd.DataFrame:
     """
@@ -357,76 +335,7 @@ def transform_orders(customers_df: pd.DataFrame) -> pd.DataFrame:
     return orders
 
 
-# ============================================================================
-# VALIDAÇÃO DE QUALIDADE
-# ============================================================================
-
-def validate_data_quality(customers_df: pd.DataFrame, orders_df: pd.DataFrame) -> Dict:
-    """Valida qualidade dos dados transformados."""
-    logger.info("\n" + "="*70)
-    logger.info(" VALIDAÇÃO DE QUALIDADE")
-    logger.info("="*70)
-    
-    quality_report = {
-        'timestamp': datetime.now(),
-        'customers': {},
-        'orders': {},
-        'integrity': {}
-    }
-    
-    # Customers
-    quality_report['customers'] = {
-        'total_records': len(customers_df),
-        'unique_ids': customers_df['customer_id'].nunique(),
-        'unique_emails': customers_df['email'].nunique(),
-        'null_check': customers_df.isnull().sum().to_dict()
-    }
-    
-    # Orders
-    quality_report['orders'] = {
-        'total_records': len(orders_df),
-        'unique_ids': orders_df['order_id'].nunique(),
-        'null_check': orders_df.isnull().sum().to_dict()
-    }
-    
-    # Integridade referencial
-    customers_with_orders = orders_df['customer_email'].nunique()
-    customers_without_orders = len(customers_df) - customers_with_orders
-    
-    quality_report['integrity'] = {
-        'customers_with_orders': customers_with_orders,
-        'customers_without_orders': customers_without_orders,
-        'orphan_orders': 0  # Garantido pelo inner join
-    }
-    
-    logger.info(f"\n CUSTOMERS:")
-    logger.info(f"   Total:          {quality_report['customers']['total_records']:,}")
-    logger.info(f"   IDs únicos:     {quality_report['customers']['unique_ids']:,}")
-    logger.info(f"   Emails únicos:  {quality_report['customers']['unique_emails']:,}")
-    
-    logger.info(f"\n ORDERS:")
-    logger.info(f"   Total:          {quality_report['orders']['total_records']:,}")
-    logger.info(f"   IDs únicos:     {quality_report['orders']['unique_ids']:,}")
-    
-    logger.info(f"\n INTEGRIDADE:")
-    logger.info(f"   Customers com orders:     {customers_with_orders:,}")
-    logger.info(f"   Customers sem orders:     {customers_without_orders:,}")
-    logger.info(f"   Orders órfãs:             0 (garantido)")
-    
-    # Verificação de campos NULL críticos
-    logger.info(f"\n CAMPOS CRÍTICOS (NULL check):")
-    if 'order_date' in orders_df.columns:
-        null_order_dates = orders_df['order_date'].isna().sum()
-        logger.info(f"   order_date NULL:  {null_order_dates} (deve ser 0!)")
-        if null_order_dates > 0:
-            logger.error(f"ERRO: order_date tem valores NULL!")
-    
-    return quality_report
-
-
-# ============================================================================
 # ORQUESTRAÇÃO
-# ============================================================================
 
 def transform_all():
     """Executa pipeline completo de transformação."""
@@ -452,8 +361,6 @@ def transform_all():
         logger.error("FALHA: Orders vazio")
         return
     
-    # 3. Validar qualidade
-    quality_report = validate_data_quality(customers_df, orders_df)
     
     # 4. Salvar na Silver
     save_to_silver(customers_df, 'customers')
@@ -472,10 +379,7 @@ def transform_all():
     logger.info(f" Registros rejeitados salvos em: {REJECTED_DIR}")
     logger.info("="*70)
 
-
-# ============================================================================
 # EXECUÇÃO
-# ============================================================================
 
 if __name__ == "__main__":
     transform_all()

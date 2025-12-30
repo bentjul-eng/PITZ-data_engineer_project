@@ -364,7 +364,7 @@ customers (1) ──< (N) orders
 
 ---
 
-## 📊 Consultas SQL
+##  Consultas SQL
 
 ### 1. Total de Vendas por Cliente
 
