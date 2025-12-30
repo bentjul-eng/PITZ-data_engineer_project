@@ -1,114 +1,263 @@
 """
-SCRIPT DE DIAGNÓSTICO
-======================
-Verifica as colunas reais dos arquivos Bronze para debug.
+Diagnóstico Completo do Pipeline de Dados
+==========================================
+Verifica se tudo está pronto para execução.
 """
 
-import pandas as pd
+import subprocess
+import sys
 from pathlib import Path
-import json
+import psycopg2
 
 
-# DIRETÓRIOS
-JSON_DIR = Path('data') / 'raw' / 'json_files'
-BRONZE_DIR = Path('data') / 'bronze'
+def check_emoji(condition):
+    return "✅" if condition else "❌"
 
 
-def inspect_json_file(filename: str):
-    """Inspeciona estrutura do arquivo JSON."""
-    filepath = JSON_DIR / filename
-    
-    print(f"\n{'='*70}")
-    print(f"ARQUIVO: {filename}")
-    print(f"{'='*70}")
-    
-    try:
-        with open(filepath, 'r', encoding='utf-8') as f:
-            data = json.load(f)
-        
-        if isinstance(data, list) and len(data) > 0:
-            # Pega primeiro registro
-            first_record = data[0]
-            
-            print(f"Total de registros: {len(data)}")
-            print(f"\nColunas encontradas ({len(first_record)}):")
-            for i, col in enumerate(first_record.keys(), 1):
-                print(f"  {i}. '{col}'")
-            
-            print(f"\nPrimeiro registro (exemplo):")
-            for key, value in first_record.items():
-                # Trunca valores longos
-                val_str = str(value)[:50]
-                print(f"  {key}: {val_str}")
-        
-        else:
-            print("ERRO: Arquivo vazio ou formato inesperado")
-    
-    except FileNotFoundError:
-        print(f"ERRO: Arquivo não encontrado")
-    except Exception as e:
-        print(f"ERRO: {e}")
+def print_section(title):
+    print(f"\n{'='*60}")
+    print(f"  {title}")
+    print('='*60)
 
 
-def inspect_parquet_file(filename: str):
-    """Inspeciona estrutura do arquivo Parquet."""
-    filepath = BRONZE_DIR / filename
-    
-    print(f"\n{'='*70}")
-    print(f"ARQUIVO PARQUET: {filename}")
-    print(f"{'='*70}")
+def check_docker():
+    """Verifica se Docker está rodando."""
+    print_section("🐳 VERIFICANDO DOCKER")
     
     try:
-        df = pd.read_parquet(filepath)
+        result = subprocess.run(
+            ['docker', 'ps', '--format', '{{.Names}}'],
+            capture_output=True,
+            text=True,
+            timeout=5
+        )
         
-        print(f"Total de registros: {len(df)}")
-        print(f"\nColunas encontradas ({len(df.columns)}):")
-        for i, col in enumerate(df.columns, 1):
-            dtype = df[col].dtype
-            null_count = df[col].isnull().sum()
-            print(f"  {i}. '{col}' (tipo: {dtype}, nulos: {null_count})")
+        containers = result.stdout.strip().split('\n')
+        containers = [c for c in containers if c]  # Remove vazios
         
-        print(f"\nPrimeira linha (exemplo):")
-        first_row = df.iloc[0].to_dict()
-        for key, value in first_row.items():
-            val_str = str(value)[:50]
-            print(f"  {key}: {val_str}")
-        
-        # Busca por colunas que contenham 'email'
-        print(f"\nColunas que contêm 'email' (case-insensitive):")
-        email_cols = [col for col in df.columns if 'email' in col.lower()]
-        if email_cols:
-            for col in email_cols:
-                print(f"  ✓ {col}")
+        if containers:
+            print(f"{check_emoji(True)} Docker está rodando")
+            print(f"   Containers ativos: {len(containers)}")
+            for container in containers:
+                print(f"   • {container}")
+            return True
         else:
-            print("  ✗ NENHUMA coluna com 'email' encontrada")
-    
+            print(f"{check_emoji(False)} Docker rodando mas SEM containers")
+            print("   💡 Inicie o container PostgreSQL primeiro!")
+            return False
+            
     except FileNotFoundError:
-        print(f"ERRO: Arquivo não encontrado")
+        print(f"{check_emoji(False)} Docker não encontrado")
+        print("   💡 Instale o Docker Desktop")
+        return False
+    except subprocess.TimeoutExpired:
+        print(f"{check_emoji(False)} Docker não responde")
+        print("   💡 Reinicie o Docker Desktop")
+        return False
     except Exception as e:
-        print(f"ERRO: {e}")
+        print(f"{check_emoji(False)} Erro: {e}")
+        return False
+
+
+def check_postgres_connection():
+    """Verifica conexão com PostgreSQL."""
+    print_section("🔌 VERIFICANDO CONEXÃO POSTGRESQL")
+    
+    try:
+        conn = psycopg2.connect(
+            host='localhost',
+            port=5432,
+            database='ecommerce',
+            user='postgres',
+            password='postgres',
+            connect_timeout=3
+        )
+        
+        cursor = conn.cursor()
+        cursor.execute("SELECT version();")
+        version = cursor.fetchone()[0]
+        
+        print(f"{check_emoji(True)} Conexão estabelecida")
+        print(f"   PostgreSQL: {version.split(',')[0]}")
+        
+        cursor.close()
+        conn.close()
+        return True
+        
+    except psycopg2.OperationalError as e:
+        print(f"{check_emoji(False)} Não foi possível conectar")
+        print(f"   Erro: {e}")
+        print("   💡 Verifique se o container PostgreSQL está rodando")
+        print("   💡 Comando: docker ps")
+        return False
+    except Exception as e:
+        print(f"{check_emoji(False)} Erro: {e}")
+        return False
+
+
+def check_database_tables():
+    """Verifica se as tabelas existem."""
+    print_section("📊 VERIFICANDO TABELAS NO BANCO")
+    
+    try:
+        conn = psycopg2.connect(
+            host='localhost',
+            port=5432,
+            database='ecommerce',
+            user='postgres',
+            password='postgres'
+        )
+        
+        cursor = conn.cursor()
+        cursor.execute("""
+            SELECT table_name 
+            FROM information_schema.tables 
+            WHERE table_schema = 'public';
+        """)
+        
+        tables = [row[0] for row in cursor.fetchall()]
+        
+        required_tables = ['customers', 'orders']
+        all_exist = all(table in tables for table in required_tables)
+        
+        print(f"{check_emoji(all_exist)} Tabelas encontradas: {len(tables)}")
+        
+        for table in required_tables:
+            exists = table in tables
+            print(f"   {check_emoji(exists)} {table}")
+            
+            if exists:
+                cursor.execute(f"SELECT COUNT(*) FROM {table};")
+                count = cursor.fetchone()[0]
+                print(f"      Registros: {count:,}")
+        
+        if not all_exist:
+            print("\n   💡 Execute o script SQL de criação das tabelas:")
+            print("   💡 docker exec -i <container> psql -U postgres -d ecommerce < schema.sql")
+        
+        cursor.close()
+        conn.close()
+        return all_exist
+        
+    except Exception as e:
+        print(f"{check_emoji(False)} Erro ao verificar tabelas: {e}")
+        return False
+
+
+def check_data_files():
+    """Verifica arquivos de dados."""
+    print_section("📁 VERIFICANDO ARQUIVOS DE DADOS")
+    
+    layers = {
+        'Bronze': Path('data/bronze'),
+        'Silver': Path('data/silver'),
+        'Rejected': Path('data/rejected')
+    }
+    
+    all_ok = True
+    
+    for layer_name, layer_path in layers.items():
+        exists = layer_path.exists()
+        print(f"\n{check_emoji(exists)} {layer_name}: {layer_path}")
+        
+        if exists:
+            files = list(layer_path.glob('*.parquet'))
+            print(f"   Arquivos .parquet: {len(files)}")
+            for file in files:
+                size_mb = file.stat().st_size / (1024 * 1024)
+                print(f"   • {file.name} ({size_mb:.2f} MB)")
+        else:
+            if layer_name in ['Bronze', 'Silver']:
+                all_ok = False
+                print(f"   ⚠️  Pasta não encontrada!")
+    
+    return all_ok
+
+
+def check_python_dependencies():
+    """Verifica dependências Python."""
+    print_section("🐍 VERIFICANDO DEPENDÊNCIAS PYTHON")
+    
+    required = [
+        'pandas',
+        'sqlalchemy',
+        'psycopg2',
+        'pyarrow'
+    ]
+    
+    all_installed = True
+    
+    for package in required:
+        try:
+            __import__(package)
+            print(f"{check_emoji(True)} {package}")
+        except ImportError:
+            print(f"{check_emoji(False)} {package} - NÃO INSTALADO")
+            all_installed = False
+    
+    if not all_installed:
+        print("\n   💡 Instale as dependências:")
+        print("   💡 pip install pandas sqlalchemy psycopg2-binary pyarrow")
+    
+    return all_installed
 
 
 def main():
     """Executa diagnóstico completo."""
-    print("\n" + "="*70)
-    print("DIAGNÓSTICO DE ESTRUTURA DOS DADOS")
-    print("="*70)
+    print("\n" + "="*60)
+    print("  🔍 DIAGNÓSTICO DO PIPELINE DE DADOS")
+    print("="*60)
     
-    # Inspeciona JSONs principais
-    print("\n\n>>> INSPECIONANDO ARQUIVOS JSON ORIGINAIS <<<")
-    inspect_json_file('customers_master.json')
-    inspect_json_file('payment_transactions.json')
+    results = {
+        'Docker': check_docker(),
+        'PostgreSQL': check_postgres_connection(),
+        'Tabelas': check_database_tables(),
+        'Arquivos': check_data_files(),
+        'Python': check_python_dependencies()
+    }
     
-    # Inspeciona Parquets da Bronze
-    print("\n\n>>> INSPECIONANDO ARQUIVOS PARQUET DA BRONZE <<<")
-    inspect_parquet_file('customers.parquet')
-    inspect_parquet_file('transactions.parquet')
+    # Resumo Final
+    print_section("📋 RESUMO")
     
-    print("\n" + "="*70)
-    print("DIAGNÓSTICO CONCLUÍDO")
-    print("="*70)
+    for component, status in results.items():
+        print(f"{check_emoji(status)} {component}")
+    
+    all_ok = all(results.values())
+    
+    print("\n" + "="*60)
+    if all_ok:
+        print("  ✅ TUDO PRONTO! Você pode executar o pipeline.")
+    else:
+        print("  ⚠️  ATENÇÃO! Corrija os problemas acima antes de continuar.")
+    print("="*60)
+    
+    # Próximos passos
+    print("\n📝 PRÓXIMOS PASSOS:")
+    
+    if not results['Docker']:
+        print("   1. Inicie o Docker Desktop")
+        print("   2. Execute: docker-compose up -d")
+    
+    if results['Docker'] and not results['PostgreSQL']:
+        print("   1. Verifique se o container PostgreSQL está rodando: docker ps")
+        print("   2. Se não estiver, inicie: docker-compose up -d")
+    
+    if results['PostgreSQL'] and not results['Tabelas']:
+        print("   1. Execute o script SQL de criação das tabelas")
+        print("   2. Comando: docker exec -i <container_id> psql -U postgres -d ecommerce < schema.sql")
+    
+    if not results['Arquivos']:
+        print("   1. Execute bronze_ingestion.py primeiro")
+        print("   2. Execute silver_transformation.py")
+    
+    if results['Arquivos'] and results['Tabelas']:
+        print("   1. Execute: python silver_transformation.py")
+        print("   2. Execute: python gold_loader.py")
+    
+    print("="*60)
+    
+    return 0 if all_ok else 1
 
 
 if __name__ == "__main__":
-    main()
+    sys.exit(main())
